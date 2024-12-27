@@ -48,7 +48,7 @@ export default tseslint.config(
               position: 'before',
             },
             {
-              pattern: '@/**',
+              pattern: '@**',
               group: 'internal',
               position: 'before',
             },
