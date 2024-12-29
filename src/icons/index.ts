@@ -24,6 +24,7 @@ export { default as QuestionMarkIcon } from './QuestionMarkIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as SendIcon } from './SendIcon';
 export { default as TwitterIcon } from './TwitterIcon';
+export { default as UnknownIcon } from './UnknownIcon';
 export { default as UserFullIcon } from './UserFullIcon';
 export { default as UserIcon } from './UserIcon';
 export { default as WalletIcon } from './WalletIcon';
