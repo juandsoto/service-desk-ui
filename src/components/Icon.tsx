@@ -30,20 +30,34 @@ import {
   UserIcon,
   WalletIcon,
   YoutubeIcon,
+  AudioIcon,
+  BookIcon,
+  BrainIcon,
+  DownloadIcon,
+  ExclamationMarkIcon,
+  PhoneIcon,
+  VideoIcon,
+  HappyFullIcon,
 } from '../icons';
 
 export type IconName =
+  | 'audio'
   | 'bell-on'
+  | 'book'
+  | 'brain'
   | 'briefcase'
   | 'calendar-day'
   | 'chevron-down'
   | 'chevron-left'
   | 'chevron-up'
   | 'close'
+  | 'download'
+  | 'exclamation-mark'
   | 'exit'
   | 'facebook'
   | 'file'
   | 'happy'
+  | 'happy-full'
   | 'heart'
   | 'home'
   | 'info'
@@ -54,12 +68,14 @@ export type IconName =
   | 'messages'
   | 'minimize'
   | 'paperclip'
+  | 'phone'
   | 'question-mark'
   | 'search'
   | 'send'
   | 'twitter'
   | 'user-full'
   | 'user'
+  | 'video'
   | 'wallet'
   | 'youtube';
 
@@ -69,12 +85,20 @@ type WrapperIconProps = IconProps & {
 
 const iconMap: Record<IconName, (props: IconProps) => React.ReactNode> = {
   'bell-on': BellOnIcon,
-  briefcase: BriefcaseIcon,
   'calendar-day': CalendarDayIcon,
   'chevron-down': ChevronDownIcon,
   'chevron-left': ChevronLeftIcon,
   'chevron-up': ChevronUpIcon,
+  'exclamation-mark': ExclamationMarkIcon,
+  'happy-full': HappyFullIcon,
+  'question-mark': QuestionMarkIcon,
+  'user-full': UserFullIcon,
+  audio: AudioIcon,
+  book: BookIcon,
+  brain: BrainIcon,
+  briefcase: BriefcaseIcon,
   close: CloseIcon,
+  download: DownloadIcon,
   exit: ExitIcon,
   facebook: FacebookIcon,
   file: FileIcon,
@@ -89,12 +113,12 @@ const iconMap: Record<IconName, (props: IconProps) => React.ReactNode> = {
   messages: MessagesIcon,
   minimize: MinimizeIcon,
   paperclip: PaperclipIcon,
-  'question-mark': QuestionMarkIcon,
+  phone: PhoneIcon,
   search: SearchIcon,
   send: SendIcon,
   twitter: TwitterIcon,
-  'user-full': UserFullIcon,
   user: UserIcon,
+  video: VideoIcon,
   wallet: WalletIcon,
   youtube: YoutubeIcon,
 };
