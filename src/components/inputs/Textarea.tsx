@@ -1,24 +1,18 @@
 import { twMerge } from 'tailwind-merge';
-
-type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
-  containerClassName?: string;
-  labelClassName?: string;
-  label: string;
-  variant?: 'fill' | 'outline';
-};
+import type { TextareaProps } from './_types';
 
 const variantClassName: Record<NonNullable<TextareaProps['variant']>, string> = {
   fill: 'bg-light border-light-700/40 outline-light-700/40',
   outline: 'bg-transparent border-light-700/40 outline-light-700/40',
 };
 
-export default function Textarea({
+export const Textarea: React.FC<TextareaProps> = ({
   containerClassName,
   labelClassName,
   label,
   variant = 'outline',
   ...props
-}: TextareaProps) {
+}) => {
   return (
     <div className={twMerge('w-full space-y-2', containerClassName)}>
       <label htmlFor={props.id} className={twMerge('block w-fit', labelClassName)}>
@@ -36,4 +30,4 @@ export default function Textarea({
       />
     </div>
   );
-}
+};

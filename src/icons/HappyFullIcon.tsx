@@ -1,5 +1,6 @@
-import { ICON_DEFAULT_CLASSNAME, IconProps } from '../constants/icons';
 import { twMerge } from 'tailwind-merge';
+import type { IconProps } from '../constants/icons';
+import { ICON_DEFAULT_CLASSNAME } from '../constants/icons';
 
 export default function HappyFullIcon({ className }: IconProps) {
   return (

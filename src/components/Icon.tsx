@@ -1,4 +1,4 @@
-import { IconProps } from '../constants/icons';
+import type { IconProps } from '../constants/icons';
 import {
   BellOnIcon,
   BriefcaseIcon,

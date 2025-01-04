@@ -1,5 +1,6 @@
 import { twMerge } from 'tailwind-merge';
-import { ICON_DEFAULT_CLASSNAME, IconProps } from '../constants/icons';
+import type { IconProps } from '../constants/icons';
+import { ICON_DEFAULT_CLASSNAME } from '../constants/icons';
 
 type BotIconProps = {
   containerClassName?: HTMLDivElement['className'];

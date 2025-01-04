@@ -1,24 +1,18 @@
 import { twMerge } from 'tailwind-merge';
-
-type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
-  containerClassName?: string;
-  labelClassName?: string;
-  label: string;
-  variant?: 'fill' | 'outline';
-};
+import type { InputProps } from './_types';
 
 const variantClassName: Record<NonNullable<InputProps['variant']>, string> = {
   fill: 'bg-light border-light-700/40 outline-light-700/40',
   outline: 'bg-transparent border-light-700/40 outline-light-700/40',
 };
 
-export default function Input({
+export const Input: React.FC<InputProps> = ({
   containerClassName,
   labelClassName,
   label,
   variant = 'outline',
   ...props
-}: InputProps) {
+}) => {
   return (
     <div className={twMerge('w-full space-y-2', containerClassName)}>
       <label htmlFor={props.id} className={twMerge('block w-fit', labelClassName)}>
@@ -37,4 +31,4 @@ export default function Input({
       />
     </div>
   );
-}
+};
