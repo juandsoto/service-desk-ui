@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
-import type { IconProps } from '../constants/icons';
-import { ICON_DEFAULT_CLASSNAME } from '../constants/icons';
+import type { IconProps } from './constants';
+import { ICON_DEFAULT_CLASSNAME } from './constants';
 
 export default function BriefcaseIcon({ className }: IconProps) {
   return (
