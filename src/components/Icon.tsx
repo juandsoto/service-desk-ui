@@ -1,4 +1,3 @@
-import type { IconProps } from '../constants/icons';
 import {
   BellOnIcon,
   BriefcaseIcon,
@@ -39,6 +38,7 @@ import {
   VideoIcon,
   HappyFullIcon,
 } from '../icons';
+import type { IconProps } from '../icons/constants';
 
 export type IconName =
   | 'audio'

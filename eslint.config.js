@@ -1,4 +1,5 @@
 import pluginJs from '@eslint/js';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import importPlugin from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import pluginReact from 'eslint-plugin-react';
@@ -18,6 +19,7 @@ export default [
   ...tseslint.configs.recommended,
   pluginReact.configs.flat.recommended,
   importPlugin.flatConfigs.recommended,
+  ...pluginQuery.configs['flat/recommended'],
   {
     plugins: {
       'react-hooks': reactHooks,
@@ -40,6 +42,7 @@ export default [
     rules: {
       ...reactHooks.configs.recommended.rules,
       '@typescript-eslint/no-shadow': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       'dot-notation': 'off',
       'no-bitwise': 'off',
       'no-case-declarations': 'off',
