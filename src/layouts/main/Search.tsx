@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
-import { BotIcon } from '@icons';
 import { Icon } from '@components';
+import { BotIcon } from '@icons';
 
 type SearchProps = React.HTMLAttributes<HTMLDivElement> & {
   title: string;
