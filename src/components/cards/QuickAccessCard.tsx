@@ -1,6 +1,6 @@
-import type { IconName } from '@components/Icon';
-import Icon from '@components/Icon';
 import { Link } from 'react-router';
+import { Icon } from '../';
+import type { IconName } from '../Icon';
 
 type QuickAccessProps = {
   icon: IconName;

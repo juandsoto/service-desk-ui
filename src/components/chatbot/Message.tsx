@@ -1,6 +1,6 @@
-import { BotIcon } from '@icons';
-import { formatTime } from '@utils/dates';
 import { twMerge } from 'tailwind-merge';
+import { BotIcon } from '../../icons';
+import { formatTime } from '../../utils/dates';
 
 type Message = {
   text?: string;

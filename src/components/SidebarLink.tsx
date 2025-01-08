@@ -1,8 +1,8 @@
-import { Icon } from '@components';
-import type { TCategory } from '@models';
-import { TSubCategory } from '@models/SubCategory';
 import { Link, NavLink, useLocation } from 'react-router';
 import { twMerge } from 'tailwind-merge';
+import { Icon } from '../components';
+import type { TCategory } from '../models';
+import type { TSubCategory } from '../models/SubCategory';
 
 type SidebarLinkProps = Pick<TCategory, 'title' | 'icon' | 'link'> & {
   subCategories?: TSubCategory[];

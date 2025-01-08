@@ -1,6 +1,6 @@
-import { useBot } from '@providers/BotProvider';
-import { Icon } from '@components';
-import { BotIcon } from '@icons';
+import { Icon } from '../';
+import { BotIcon } from '../../icons';
+import { useBot } from '../../providers/BotProvider';
 import Message from './Message';
 
 export default function ChatBot() {

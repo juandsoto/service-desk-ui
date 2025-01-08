@@ -1,4 +1,4 @@
-import type { IconName } from '@components/Icon';
+import type { IconName } from '../components/Icon';
 import { SubCategory, type TSubCategory } from './SubCategory';
 
 export type TCategory = {

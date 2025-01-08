@@ -1,6 +1,6 @@
 export const Utils = {
   debounce(fn: () => unknown, delay: number) {
-    let timeoutId: number;
+    let timeoutId: any;
     return function (...args: unknown[]) {
       if (timeoutId) clearTimeout(timeoutId);
 

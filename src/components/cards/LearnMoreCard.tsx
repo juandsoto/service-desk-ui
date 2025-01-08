@@ -1,7 +1,7 @@
-import { Icon } from '@components';
-import type { IconName } from '@components/Icon';
 import { Link } from 'react-router';
 import { twMerge } from 'tailwind-merge';
+import { Icon } from '../';
+import type { IconName } from '../Icon';
 
 type LearnMoreCardProps = {
   icon?: IconName;
