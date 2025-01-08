@@ -1,6 +1,6 @@
+import { Icon } from '@components';
 import { Link } from 'react-router';
 import { twMerge } from 'tailwind-merge';
-import { Icon } from '@components';
 
 type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
 

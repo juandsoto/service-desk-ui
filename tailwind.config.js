@@ -9,8 +9,10 @@ export default {
         'light-300': '#f7f7f7',
         'light-500': '#ebebeb',
         'light-700': '#6b7280',
-        primary: '#ee0000',
-        'primary-500': '#aa0000',
+        'static-blue': '#2b5dc2',
+        'static-blue-500': '#1c4780',
+        primary: '#2b5dc2',
+        'primary-500': '#1c4780',
       },
       screens: {
         xs: '480px',

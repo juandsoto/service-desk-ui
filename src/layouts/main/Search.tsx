@@ -1,23 +1,31 @@
 import { twMerge } from 'tailwind-merge';
-import { Icon } from '@components';
 import { BotIcon } from '@icons';
+import { Icon } from '@components';
 
 type SearchProps = React.HTMLAttributes<HTMLDivElement> & {
   title: string;
-  description: React.ReactNode;
+  description: string;
   openBot: () => void;
 };
 
-export const Search: React.FC<SearchProps> = ({ className, title, description, openBot, ...props }) => {
+export const Search: React.FC<SearchProps> = ({ className, style, title, description, openBot, ...props }) => {
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
   return (
-    <div className={twMerge('bg-banner h-72 bg-primary-500 text-light mb-12', className)} {...props}>
+    <div
+      className={twMerge('h-72 bg-primary-500 text-light mb-12', className)}
+      style={{
+        ...style,
+        background: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/banner.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+      {...props}>
       <div className='relative max-width h-full flex flex-col items-center justify-center text-center space-y-4'>
         <h1>{title}</h1>
-        {description}
+        <p>{description}</p>
         <form className='w-fit mx-auto' onSubmit={handleOnSubmit}>
           <label htmlFor='default-search' className='mb-2 text-sm font-medium sr-only'>
             Search
