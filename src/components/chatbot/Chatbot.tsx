@@ -1,17 +1,13 @@
-import { Icon } from '../';
+import { Icon } from '..';
 import { BotIcon } from '../../icons';
 import { useBot } from '../../providers/BotProvider';
-import Message from './Message';
 
-export default function ChatBot() {
+type ChatbotProps = React.PropsWithChildren & {
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+};
+
+export default function ChatBot({ onSubmit, children }: ChatbotProps) {
   const bot = useBot();
-
-  const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const message = formData.get('message');
-    console.log(message);
-  };
 
   return (
     <div className='relative w-full xs:w-[440px] bg-light max-h-[90vh] mx-auto overflow-auto'>
@@ -35,53 +31,10 @@ export default function ChatBot() {
         </div>
       </div>
 
-      <div className='space-y-4 p-4'>
-        <Message
-          type='bot'
-          time={new Date('2021-09-01T06:56:00')}
-          messages={[
-            { text: 'Hola!' },
-            {
-              text: 'Bienvenido a LiveChat. ¡Elija un tema de la lista o escriba una pregunta',
-              options: ['Trámites', 'Pagos', 'Otro'],
-            },
-          ]}
-        />
-        <Message type='user' time={new Date('2021-09-01T07:20:00')} messages={[{ text: 'Trámites' }]} />
-        <Message
-          type='bot'
-          time={new Date('2021-09-01T07:22:00')}
-          messages={[
-            {
-              options: ['Solicitud de Certificados', 'Registro de Predial', 'Inscripción en el SISBEN'],
-            },
-          ]}
-        />
-        <Message
-          type='bot'
-          time={new Date('2021-09-01T06:56:00')}
-          messages={[
-            { text: 'Hola!' },
-            {
-              text: 'Bienvenido a LiveChat. ¡Elija un tema de la lista o escriba una pregunta',
-              options: ['Trámites', 'Pagos', 'Otro'],
-            },
-          ]}
-        />
-        <Message type='user' time={new Date('2021-09-01T07:20:00')} messages={[{ text: 'Trámites' }]} />
-        <Message
-          type='bot'
-          time={new Date('2021-09-01T07:22:00')}
-          messages={[
-            {
-              options: ['Solicitud de Certificados', 'Registro de Predial', 'Inscripción en el SISBEN'],
-            },
-          ]}
-        />
-      </div>
+      <div className='space-y-4 p-4'>{children}</div>
 
       <div className='sticky bottom-0 h-14 bg-light border-t border-light-500'>
-        <form className='flex' onSubmit={handleOnSubmit}>
+        <form className='flex' onSubmit={onSubmit}>
           <input
             className='flex-1 w-32 xs:w-auto px-2 xs:px-6 py-4 outline-none'
             name='message'

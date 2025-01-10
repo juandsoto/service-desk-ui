@@ -17,7 +17,7 @@ export default function Message({ type, time, messages }: MessageProps) {
   const formattedTime = formatTime(time);
 
   return (
-    <div className={twMerge('w-fit', type === 'bot' ? '' : 'ml-auto')}>
+    <div className={twMerge(type === 'bot' ? '' : 'flex flex-col items-end')}>
       {type === 'bot' ? (
         <div className='flex items-center gap-2'>
           <BotIcon containerClassName='p-1' className='w-4' />
@@ -33,7 +33,7 @@ export default function Message({ type, time, messages }: MessageProps) {
             {text && (
               <p
                 className={twMerge(
-                  'px-4 py-1 border rounded-lg',
+                  'w-fit px-4 py-1 border rounded-lg',
                   type === 'bot'
                     ? 'bg-light text-light-700 border-light-500'
                     : 'bg-primary-500 text-light border-primary-500',
