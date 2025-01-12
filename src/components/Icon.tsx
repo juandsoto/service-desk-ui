@@ -3,8 +3,6 @@ import {
   BriefcaseIcon,
   CalendarDayIcon,
   ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronUpIcon,
   CloseIcon,
   ExitIcon,
   FacebookIcon,
@@ -48,8 +46,6 @@ export type IconName =
   | 'briefcase'
   | 'calendar-day'
   | 'chevron-down'
-  | 'chevron-left'
-  | 'chevron-up'
   | 'close'
   | 'download'
   | 'exclamation-mark'
@@ -87,8 +83,6 @@ const iconMap: Record<IconName, (props: IconProps) => React.ReactNode> = {
   'bell-on': BellOnIcon,
   'calendar-day': CalendarDayIcon,
   'chevron-down': ChevronDownIcon,
-  'chevron-left': ChevronLeftIcon,
-  'chevron-up': ChevronUpIcon,
   'exclamation-mark': ExclamationMarkIcon,
   'happy-full': HappyFullIcon,
   'question-mark': QuestionMarkIcon,

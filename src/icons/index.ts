@@ -6,8 +6,6 @@ export { default as BrainIcon } from './BrainIcon';
 export { default as BriefcaseIcon } from './BriefcaseIcon';
 export { default as CalendarDayIcon } from './CalendarDayIcon';
 export { default as ChevronDownIcon } from './ChevronDownIcon';
-export { default as ChevronLeftIcon } from './ChevronLeftIcon';
-export { default as ChevronUpIcon } from './ChevronUpIcon';
 export { default as CloseIcon } from './CloseIcon';
 export { default as DownloadIcon } from './DownloadIcon';
 export { default as ExclamationMarkIcon } from './ExclamationMarkIcon';

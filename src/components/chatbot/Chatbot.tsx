@@ -31,6 +31,7 @@ export default function ChatBot({ onSubmit, children }: ChatbotProps) {
         </div>
       </div>
 
+      {/* Messages */}
       <div className='space-y-4 p-4'>{children}</div>
 
       <div className='sticky bottom-0 h-14 bg-light border-t border-light-500'>

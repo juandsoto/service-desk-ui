@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 import { Icon } from '../components';
@@ -38,11 +39,21 @@ export default function SidebarLink({
   exact = false,
   variant = 'outline',
 }: SidebarLinkProps) {
+  const [height, setHeight] = useState(0);
   const location = useLocation();
   const isActive = exact ? location.pathname.endsWith(link) : location.pathname.includes(link);
+  const contentRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if (isActive) {
+      setHeight(contentRef.current?.scrollHeight || 0);
+    } else {
+      setHeight(0);
+    }
+  }, [isActive]);
 
   return (
-    <>
+    <div>
       <NavLink
         className={twMerge(
           'flex items-center gap-4 p-2 rounded-md',
@@ -59,31 +70,25 @@ export default function SidebarLink({
           />
           <span>{title}</span>
         </div>
-        {(subCategories?.length ?? 0) > 0 &&
-          (isActive ? (
-            <Icon
-              name='chevron-up'
-              className={twMerge(
-                'w-2.5',
-                isActive ? ACTIVE_ICON_VARIANT_CLASSNAME[variant] : INACTIVE_ICON_VARIANT_CLASSNAME[variant],
-              )}
-            />
-          ) : (
-            <Icon
-              name='chevron-down'
-              className={twMerge(
-                'w-2.5',
-                isActive ? ACTIVE_ICON_VARIANT_CLASSNAME[variant] : INACTIVE_ICON_VARIANT_CLASSNAME[variant],
-              )}
-            />
-          ))}
+        {(subCategories?.length ?? 0) > 0 && (
+          <Icon
+            name='chevron-down'
+            className={twMerge(
+              'w-2.5 transition-transform duration-300',
+              isActive ? 'rotate-180' : '',
+              isActive ? ACTIVE_ICON_VARIANT_CLASSNAME[variant] : INACTIVE_ICON_VARIANT_CLASSNAME[variant],
+            )}
+          />
+        )}
       </NavLink>
       {(subCategories?.length ?? 0) > 0 && (
         <ul
-          className='pl-10 space-y-4 mb-4'
-          style={{
-            display: isActive ? 'block' : 'none',
-          }}>
+          ref={contentRef}
+          style={{ height: `${height}px` }}
+          className={twMerge(
+            'overflow-hidden transition-all duration-300 pl-10 space-y-4',
+            isActive ? 'my-2' : 'my-0',
+          )}>
           {subCategories?.map(subCategory => {
             const isChildActive = location.pathname.includes(subCategory.link);
             return (
@@ -100,6 +105,6 @@ export default function SidebarLink({
           })}
         </ul>
       )}
-    </>
+    </div>
   );
 }
