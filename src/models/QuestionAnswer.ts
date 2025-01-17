@@ -14,7 +14,7 @@ function parseQuestionAnswer(json: any): TQuestionAnswer {
     question: json?.question ?? '',
     answer: json?.answer ?? '',
     status: json?.status ?? 'inactive',
-    tags: json?.tags.split(',') ?? [],
+    tags: json?.tags?.split(',') ?? [],
     order: json?.order ?? 0,
     subcategoryId: json?.subcategory_id,
   };

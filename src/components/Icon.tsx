@@ -76,7 +76,7 @@ export type IconName =
   | 'youtube';
 
 type WrapperIconProps = IconProps & {
-  name: IconName;
+  name: IconName | null;
 };
 
 const iconMap: Record<IconName, (props: IconProps) => React.ReactNode> = {
@@ -117,8 +117,42 @@ const iconMap: Record<IconName, (props: IconProps) => React.ReactNode> = {
   youtube: YoutubeIcon,
 };
 
+export const PUBLIC_ICON_NAMES: IconName[] = [
+  ...new Set<IconName>([
+    'bell-on',
+    'calendar-day',
+    'exclamation-mark',
+    'happy-full',
+    'question-mark',
+    'user-full',
+    'audio',
+    'book',
+    'brain',
+    'briefcase',
+    'download',
+    'file',
+    'happy',
+    'heart',
+    'home',
+    'info',
+    'lock',
+    'messages',
+    'paperclip',
+    'phone',
+    'search',
+    'send',
+    'trash',
+    'user',
+    'video',
+    'wallet',
+  ]),
+];
+
 const Icon: React.FC<WrapperIconProps> = ({ name, ...props }) => {
-  const Icon = iconMap[name] || UnknownIcon;
+  const Icon = name === null ? null : iconMap[name] || UnknownIcon;
+
+  if (Icon === null) return null;
+
   return <Icon {...props} />;
 };
 
