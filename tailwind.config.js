@@ -13,6 +13,7 @@ export default {
         'static-blue-500': '#1c4780',
         primary: '#2b5dc2',
         'primary-500': '#1c4780',
+        error: '#db2525',
       },
       screens: {
         xs: '480px',

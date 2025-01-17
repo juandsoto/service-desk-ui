@@ -4,7 +4,7 @@ import type { ButtonProps } from './_types';
 
 const VARIANT_CLASSNAME: Record<NonNullable<ButtonProps['variant']>, string> = {
   fill: 'bg-primary-500 focus:ring-primary-500 border border-primary-500',
-  outline: 'bg-transparent focus:ring-primary-500 border border-primary-500 text-primary-500',
+  outline: 'bg-inherit focus:ring-primary-500 border border-primary-500 text-primary-500',
 };
 
 const VARIANT_ICON_CLASSNAME: Record<NonNullable<ButtonProps['variant']>, string> = {

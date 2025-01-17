@@ -11,6 +11,7 @@ export const Textarea: React.FC<TextareaProps> = ({
   labelClassName,
   label,
   variant = 'outline',
+  error = '',
   ...props
 }) => {
   return (
@@ -28,6 +29,7 @@ export const Textarea: React.FC<TextareaProps> = ({
         id={props.id}
         placeholder={props.placeholder}
       />
+      <span className='block mt-2 text-error transition-opacity'>{error}</span>
     </div>
   );
 };

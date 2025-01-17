@@ -35,6 +35,9 @@ import {
   PhoneIcon,
   VideoIcon,
   HappyFullIcon,
+  LoaderIcon,
+  PlusIcon,
+  TrashIcon,
 } from '../icons';
 import type { IconProps } from '../icons/constants';
 
@@ -59,15 +62,18 @@ export type IconName =
   | 'info'
   | 'instagram'
   | 'link'
+  | 'loader'
   | 'lock'
   | 'menu'
   | 'messages'
   | 'minimize'
   | 'paperclip'
   | 'phone'
+  | 'plus'
   | 'question-mark'
   | 'search'
   | 'send'
+  | 'trash'
   | 'twitter'
   | 'user-full'
   | 'user'
@@ -115,6 +121,9 @@ const iconMap: Record<IconName, (props: IconProps) => React.ReactNode> = {
   video: VideoIcon,
   wallet: WalletIcon,
   youtube: YoutubeIcon,
+  loader: LoaderIcon,
+  plus: PlusIcon,
+  trash: TrashIcon,
 };
 
 export const PUBLIC_ICON_NAMES: IconName[] = [

@@ -13,4 +13,5 @@ export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & 
   labelClassName?: string;
   label: string;
   variant?: 'fill' | 'outline';
+  error?: string;
 };
