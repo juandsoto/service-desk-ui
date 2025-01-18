@@ -90,7 +90,7 @@ export default function SidebarLink({
           style={{ height: `${height}px` }}
           className={twMerge('overflow-hidden transition-all duration-300 pl-6 space-y-4', isActive ? 'my-2' : 'my-0')}>
           {subCategories?.map(subCategory => {
-            const isChildActive = location.pathname.includes(subCategory.link);
+            const isChildActive = location.pathname.endsWith(subCategory.link);
             return (
               <li key={`${link}${subCategory.link}`}>
                 <Link
