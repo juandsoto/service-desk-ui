@@ -6,7 +6,6 @@ export type TSubCategory = {
   id: number;
   title: string;
   description: string;
-  shortDescription: string;
   link: string;
   icon: IconName | null;
   status: 'active' | 'inactive';
@@ -24,7 +23,6 @@ function parseSubCategory(json: any): TSubCategory {
     id: json?.id ?? 0,
     title: json?.title ?? '',
     description: json?.description ?? '',
-    shortDescription: json?.short_description ?? '',
     link: json?.link ?? '',
     icon: json?.icon ?? null,
     status: json?.status ?? 'inactive',

@@ -5,7 +5,6 @@ export type TCategory = {
   id: number;
   title: string;
   description: string;
-  shortDescription: string;
   link: string;
   icon: IconName;
   status: 'active' | 'inactive';
@@ -22,7 +21,6 @@ function parseCategory(json: any): TCategory {
     id: json?.id ?? 0,
     title: json?.title ?? '',
     description: json?.description ?? '',
-    shortDescription: json?.short_description ?? '',
     link: json?.link ?? '',
     icon: json?.icon ?? '',
     status: json?.status ?? 'inactive',

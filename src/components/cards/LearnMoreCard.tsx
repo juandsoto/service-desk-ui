@@ -26,10 +26,14 @@ const VARIANT_LINK_CLASSNAME: Record<NonNullable<LearnMoreCardProps['variant']>,
 
 export default function LearnMoreCard({ description, icon, link, title, variant = 'outline' }: LearnMoreCardProps) {
   return (
-    <div className={twMerge('space-y-2 w-full px-6 py-4 rounded-md border shadow-sm', VARIANT_CLASSNAME[variant])}>
+    <div
+      className={twMerge(
+        'flex flex-col gap-2 w-full px-6 py-4 rounded-md border shadow-sm',
+        VARIANT_CLASSNAME[variant],
+      )}>
       {icon && <Icon name={icon} className='text-light w-10' />}
-      <h3>{title}</h3>
-      <p className={twMerge('text-base', VARIANT_DESCRIPTION_CLASSNAME[variant])}>{description}</p>
+      <h3 className='line-clamp-2'>{title}</h3>
+      <p className={twMerge('flex-1 text-base line-clamp-3', VARIANT_DESCRIPTION_CLASSNAME[variant])}>{description}</p>
       <Link
         to={link}
         className={twMerge('flex w-fit items-center gap-2 font-semibold', VARIANT_LINK_CLASSNAME[variant])}>

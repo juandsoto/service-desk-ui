@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, NavLink, useLocation } from 'react-router';
+import { Link, NavLink, useLocation, useParams } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 import { Icon } from '../components';
 import type { TCategory } from '../models';
@@ -41,7 +41,10 @@ export default function SidebarLink({
 }: SidebarLinkProps) {
   const [height, setHeight] = useState(0);
   const location = useLocation();
-  const isActive = exact ? location.pathname.endsWith(link) : location.pathname.includes(link);
+  const params = useParams();
+  const isActive = exact
+    ? location.pathname.endsWith(link)
+    : link.replace('/admin', '').split('/')[1] === params.category || '';
   const contentRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
@@ -85,10 +88,7 @@ export default function SidebarLink({
         <ul
           ref={contentRef}
           style={{ height: `${height}px` }}
-          className={twMerge(
-            'overflow-hidden transition-all duration-300 pl-10 space-y-4',
-            isActive ? 'my-2' : 'my-0',
-          )}>
+          className={twMerge('overflow-hidden transition-all duration-300 pl-6 space-y-4', isActive ? 'my-2' : 'my-0')}>
           {subCategories?.map(subCategory => {
             const isChildActive = location.pathname.includes(subCategory.link);
             return (
@@ -98,7 +98,10 @@ export default function SidebarLink({
                     isChildActive ? twMerge('border-l-indicator', variant === 'fill' ? 'before:bg-light' : '') : ''
                   }
                   to={`${link}${subCategory.link}`}>
-                  {subCategory.title}
+                  <div className='flex items-center gap-2 flex-1'>
+                    <Icon name={subCategory.icon} className={twMerge('w-4 text-light')} />
+                    <span>{subCategory.title}</span>
+                  </div>
                 </Link>
               </li>
             );

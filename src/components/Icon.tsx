@@ -1,43 +1,43 @@
 import {
+  AudioIcon,
   BellOnIcon,
+  BookIcon,
+  BrainIcon,
   BriefcaseIcon,
   CalendarDayIcon,
   ChevronDownIcon,
   CloseIcon,
+  DownloadIcon,
+  EmptyIcon,
+  ExclamationMarkIcon,
   ExitIcon,
   FacebookIcon,
   FileIcon,
+  HappyFullIcon,
   HappyIcon,
   HeartIcon,
   HomeIcon,
   InfoIcon,
   InstagramIcon,
   LinkIcon,
+  LoaderIcon,
   LockIcon,
   MenuIcon,
   MessagesIcon,
   MinimizeIcon,
   PaperclipIcon,
+  PhoneIcon,
+  PlusIcon,
   QuestionMarkIcon,
   SearchIcon,
   SendIcon,
+  TrashIcon,
   TwitterIcon,
-  UnknownIcon,
   UserFullIcon,
   UserIcon,
+  VideoIcon,
   WalletIcon,
   YoutubeIcon,
-  AudioIcon,
-  BookIcon,
-  BrainIcon,
-  DownloadIcon,
-  ExclamationMarkIcon,
-  PhoneIcon,
-  VideoIcon,
-  HappyFullIcon,
-  LoaderIcon,
-  PlusIcon,
-  TrashIcon,
 } from '../icons';
 import type { IconProps } from '../icons/constants';
 
@@ -158,9 +158,11 @@ export const PUBLIC_ICON_NAMES: IconName[] = [
 ];
 
 const Icon: React.FC<WrapperIconProps> = ({ name, ...props }) => {
-  const Icon = name === null ? null : iconMap[name] || UnknownIcon;
+  if (!name) return <EmptyIcon {...props} />;
 
-  if (Icon === null) return null;
+  const Icon = iconMap[name];
+
+  if (!Icon) return <EmptyIcon {...props} />;
 
   return <Icon {...props} />;
 };
