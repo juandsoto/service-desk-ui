@@ -31,6 +31,16 @@ const INACTIVE_ICON_VARIANT_CLASSNAME: Record<NonNullable<SidebarLinkProps['vari
   outline: 'text-light-700',
 };
 
+const ACTIVE_CHILD_ICON_VARIANT_CLASSNAME: Record<NonNullable<SidebarLinkProps['variant']>, string> = {
+  fill: 'text-light',
+  outline: 'text-primary-500',
+};
+
+const INACTIVE_CHILD_ICON_VARIANT_CLASSNAME: Record<NonNullable<SidebarLinkProps['variant']>, string> = {
+  fill: 'text-light',
+  outline: 'text-light-700',
+};
+
 export default function SidebarLink({
   title,
   icon,
@@ -99,7 +109,15 @@ export default function SidebarLink({
                   }
                   to={`${link}${subCategory.link}`}>
                   <div className='flex items-center gap-2 flex-1'>
-                    <Icon name={subCategory.icon} className={twMerge('w-4 text-light')} />
+                    <Icon
+                      name={subCategory.icon}
+                      className={twMerge(
+                        'w-4',
+                        isChildActive
+                          ? ACTIVE_CHILD_ICON_VARIANT_CLASSNAME[variant]
+                          : INACTIVE_CHILD_ICON_VARIANT_CLASSNAME[variant],
+                      )}
+                    />
                     <span>{subCategory.title}</span>
                   </div>
                 </Link>
