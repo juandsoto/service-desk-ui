@@ -7,6 +7,7 @@ const variantClassName: Record<NonNullable<TextareaProps['variant']>, string> = 
 };
 
 export const Textarea: React.FC<TextareaProps> = ({
+  id,
   containerClassName,
   labelClassName,
   label,
@@ -16,7 +17,7 @@ export const Textarea: React.FC<TextareaProps> = ({
 }) => {
   return (
     <div className={twMerge('w-full space-y-2', containerClassName)}>
-      <label htmlFor={props.id} className={twMerge('block w-fit', labelClassName)}>
+      <label htmlFor={id} className={twMerge('block w-fit', labelClassName)}>
         {label}
       </label>
       <textarea
@@ -26,10 +27,12 @@ export const Textarea: React.FC<TextareaProps> = ({
           variantClassName[variant],
           props.className,
         )}
-        id={props.id}
+        id={id}
         placeholder={props.placeholder}
       />
-      <span className='block mt-2 text-error transition-opacity'>{error}</span>
+      <span id={`${id}-error`} className='block mt-2 text-error transition-opacity'>
+        {error}
+      </span>
     </div>
   );
 };

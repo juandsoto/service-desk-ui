@@ -2,8 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation, useParams } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 import { Icon } from '../components';
-import type { TCategory } from '../models';
-import type { TSubCategory } from '../models/SubCategory';
+import type { TCategory, TSubCategory } from '../models';
 
 type SidebarLinkProps = Pick<TCategory, 'title' | 'icon' | 'link'> & {
   subCategories?: TSubCategory[];

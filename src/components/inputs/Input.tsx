@@ -7,6 +7,7 @@ const variantClassName: Record<NonNullable<InputProps['variant']>, string> = {
 };
 
 export const Input: React.FC<InputProps> = ({
+  id,
   containerClassName,
   labelClassName,
   label,
@@ -19,7 +20,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className={twMerge('w-full', containerClassName)}>
       <div className='flex items-center justify-between gap-4 mb-2'>
-        <label htmlFor={props.id} className={twMerge('block w-fit', labelClassName)}>
+        <label htmlFor={id} className={twMerge('block w-fit', labelClassName)}>
           {label}
         </label>
         {actions}
@@ -33,12 +34,14 @@ export const Input: React.FC<InputProps> = ({
             props.className,
           )}
           type={props.type}
-          id={props.id}
+          id={id}
           placeholder={props.placeholder}
         />
         {rightAction}
       </div>
-      <span className='block mt-2 text-error transition-opacity'>{error}</span>
+      <span id={`${id}-error`} className='block mt-2 text-error transition-opacity'>
+        {error}
+      </span>
     </div>
   );
 };
