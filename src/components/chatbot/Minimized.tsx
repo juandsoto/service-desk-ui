@@ -1,5 +1,5 @@
 import { BotIcon } from '../../icons';
-import { useBot } from '../../providers/BotProvider';
+import { useBot } from '../../providers/bot_provider';
 
 export default function Minimized() {
   const bot = useBot();

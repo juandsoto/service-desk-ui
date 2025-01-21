@@ -1,6 +1,6 @@
 import { Icon } from '..';
 import { BotIcon } from '../../icons';
-import { useBot } from '../../providers/BotProvider';
+import { useBot } from '../../providers/bot_provider';
 
 type ChatbotProps = React.PropsWithChildren & {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
