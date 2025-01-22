@@ -38,7 +38,7 @@ const Collapsible: React.FC<CollapsibleProps> = ({
         {...headerProps}
         disabled={!children}
         onClick={onToggle}
-        className={twMerge('flex justify-between w-full text-left py-2', headerProps?.className)}>
+        className={twMerge('flex items-center justify-between w-full text-left py-2', headerProps?.className)}>
         {header}
         {children && (
           <ChevronDownIcon className={twMerge(`transition-transform duration-300`, isOpen ? 'rotate-180' : '')} />

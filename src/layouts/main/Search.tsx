@@ -1,3 +1,4 @@
+import { useNavigate, useSearchParams } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 import { Icon } from '../../components';
 import { BotIcon } from '../../icons';
@@ -9,8 +10,24 @@ type SearchProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export const Search: React.FC<SearchProps> = ({ className, style, title, description, openBot, ...props }) => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const query = searchParams.get('q') ?? '';
+
   const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const q = e.target.value;
+
+    if (q.length === 0) {
+      navigate('/');
+      return;
+    }
+
+    navigate(`/search?q=${encodeURIComponent(q)}`);
   };
 
   return (
@@ -36,8 +53,11 @@ export const Search: React.FC<SearchProps> = ({ className, style, title, descrip
             </div>
             <input
               type='search'
-              id='default-search'
-              className='block sm:w-96 p-4 ps-10 bg-light text-dark border border-light-500 rounded-lg focus:ring-primary focus:border-primary outline-primary'
+              id='search'
+              name='search'
+              value={query}
+              onChange={handleSearchChange}
+              className='block sm:w-96 p-4 ps-12 bg-light text-dark border border-light-500 rounded-lg focus:ring-primary focus:border-primary outline-primary'
               placeholder='Ingresa una palabra clave o una pregunta'
             />
           </div>

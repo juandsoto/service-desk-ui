@@ -1,10 +1,13 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { twMerge } from 'tailwind-merge';
 import { Icon } from '../../components';
+import { Button } from '../../components/buttons';
 
 type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
 export const Header: React.FC<HeaderProps> = ({ className, ...props }) => {
+  const navigate = useNavigate();
+
   return (
     <div
       className={twMerge(
@@ -12,10 +15,10 @@ export const Header: React.FC<HeaderProps> = ({ className, ...props }) => {
         className,
       )}
       {...props}>
-      <Link to='/' className='flex items-center gap-3 cursor-pointer'>
+      <Button unstyled onClick={() => navigate(-1)} className='flex items-center gap-3 cursor-pointer'>
         <Icon name='chevron-down' className='mt-0.5 w-3 h-3 rotate-90' />
         <span>Regresar</span>
-      </Link>
+      </Button>
       <Link to='/'>
         <img src='/alcaldia.png' className='sm:absolute-center' />
       </Link>

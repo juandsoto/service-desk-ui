@@ -5,7 +5,7 @@ import { Icon } from '../';
 import type { IconName } from '../Icon';
 
 type LinkCardProps = Omit<LinkProps, 'to'> & {
-  icon: IconName;
+  icon: IconName | null;
   title: string;
   description: string;
   link: string;

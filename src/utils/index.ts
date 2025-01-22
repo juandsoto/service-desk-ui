@@ -10,4 +10,10 @@ export const Utils = {
       }, delay);
     };
   },
+  normalizeString: (str: string) =>
+    str
+      .normalize('NFD') // Decomposes accents and diacritics
+      .replace(/[\u0300-\u036f]/g, '') // Removes the decomposed marks
+      .replace(/[^\w]/g, '') // Removes non-alphanumeric characters
+      .toLowerCase(), // Ensures case insensitivity
 };
