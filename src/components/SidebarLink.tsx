@@ -11,7 +11,7 @@ type SidebarLinkProps = Pick<TCategory, 'title' | 'icon' | 'link'> & {
 };
 
 const ACTIVE_VARIANT_CLASSNAME: Record<NonNullable<SidebarLinkProps['variant']>, string> = {
-  fill: 'bg-white text-primary-500',
+  fill: 'bg-light text-primary-500',
   outline: 'bg-primary text-light',
 };
 
