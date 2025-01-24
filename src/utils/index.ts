@@ -10,6 +10,9 @@ export const Utils = {
       }, delay);
     };
   },
+  wait: (ms: number): Promise<void> => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  },
   normalizeString: (str: string) =>
     str
       .normalize('NFD') // Decomposes accents and diacritics

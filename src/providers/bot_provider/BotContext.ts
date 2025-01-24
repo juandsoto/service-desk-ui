@@ -1,7 +1,13 @@
 import { createContext, useContext } from 'react';
+import type { ChatbotMessageProps } from '../../components/chatbot/Message';
+import type { TChatbotOption } from '../../models';
 
 export type BotContextProps = {
   status: 'opened' | 'closed' | 'minimized';
+  currentOptions: TChatbotOption[];
+  chatbotMessages: ChatbotMessageProps[];
+  setCurrentOptions: React.Dispatch<React.SetStateAction<TChatbotOption[]>>;
+  setChatbotMessages: React.Dispatch<React.SetStateAction<ChatbotMessageProps[]>>;
   open: () => void;
   close: () => void;
   minimize: () => void;
