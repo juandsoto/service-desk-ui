@@ -4,16 +4,18 @@ import { formatTime } from '../../utils/dates';
 
 type Message = {
   text?: string;
-  options?: string[];
+  options?: { label: string; value: number }[];
 };
 
-type MessageProps = {
+export type ChatbotMessageProps = {
   type: 'bot' | 'user';
   time: Date;
   messages: Message[];
+  blockOptions?: boolean;
+  onOptionSelected?: (optionValue: number) => void;
 };
 
-export default function Message({ type, time, messages }: MessageProps) {
+export default function Message({ type, time, messages, blockOptions = false, onOptionSelected }: ChatbotMessageProps) {
   const formattedTime = formatTime(time);
 
   return (
@@ -46,9 +48,11 @@ export default function Message({ type, time, messages }: MessageProps) {
               <div className='flex flex-wrap items-center gap-2 mt-2'>
                 {options?.map(option => (
                   <button
-                    key={`${formattedTime} - ${option}`}
-                    className='px-4 py-1 bg-light text-light-700 border border-light-500 rounded-lg'>
-                    {option}
+                    disabled={blockOptions}
+                    key={`${formattedTime} - ${option.value}`}
+                    className='px-4 py-1 bg-light text-light-700 border border-light-500 rounded-lg shadow-md'
+                    onClick={() => onOptionSelected?.(option.value)}>
+                    {option.label}
                   </button>
                 ))}
               </div>
