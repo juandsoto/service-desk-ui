@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { BotIcon } from '../../icons';
 import { formatTime } from '../../utils/dates';
@@ -14,12 +13,18 @@ export type ChatbotMessageProps = {
   time: Date;
   messages: Message[];
   blockOptions?: boolean;
+  selectedOptionsIds: number[];
   onOptionSelected?: (optionValue: number) => void;
 };
 
-export default function Message({ type, time, messages, blockOptions = false, onOptionSelected }: ChatbotMessageProps) {
-  const [selectedOptionId, setSelectedOptionId] = useState<number>(-1);
-
+export default function Message({
+  type,
+  time,
+  messages,
+  selectedOptionsIds,
+  blockOptions = false,
+  onOptionSelected,
+}: ChatbotMessageProps) {
   const formattedTime = formatTime(time);
 
   return (
@@ -55,12 +60,9 @@ export default function Message({ type, time, messages, blockOptions = false, on
                     key={`${formattedTime} - ${option.value}`}
                     className={twMerge(
                       'px-4 py-1 bg-light text-light-700 border border-light-500 rounded-lg shadow-md',
-                      selectedOptionId === option.value ? 'bg-primary border-primary text-light' : '',
+                      selectedOptionsIds.includes(option.value) ? 'bg-primary border-primary text-light' : '',
                     )}
-                    onClick={() => {
-                      setSelectedOptionId(option.value);
-                      onOptionSelected?.(option.value);
-                    }}>
+                    onClick={() => onOptionSelected?.(option.value)}>
                     {option.label}
                   </Button>
                 ))}

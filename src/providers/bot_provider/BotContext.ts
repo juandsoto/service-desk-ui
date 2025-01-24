@@ -7,7 +7,7 @@ export type BotContextProps = {
   currentOptions: TChatbotOption[];
   chatbotMessages: ChatbotMessageProps[];
   setCurrentOptions: React.Dispatch<React.SetStateAction<TChatbotOption[]>>;
-  setChatbotMessages: React.Dispatch<React.SetStateAction<ChatbotMessageProps[]>>;
+  setChatbotMessages: React.Dispatch<React.SetStateAction<Omit<ChatbotMessageProps, 'selectedOptionsIds'>[]>>;
   open: () => void;
   close: () => void;
   minimize: () => void;
