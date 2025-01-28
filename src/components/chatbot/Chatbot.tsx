@@ -55,7 +55,7 @@ const Chatbot = forwardRef<ChatbotRef, ChatbotProps>(function ChatBot(
       </div>
 
       {/* Messages */}
-      <div className='flex-1 space-y-4 p-4'>{children}</div>
+      <div className='flex-1 space-y-4 p-4 pb-16'>{children}</div>
     </div>
   );
 });
