@@ -20,9 +20,11 @@ export const Input: React.FC<InputProps> = ({
   return (
     <div className={twMerge('w-full', containerClassName)}>
       <div className='flex items-center justify-between gap-4 mb-2'>
-        <label htmlFor={id} className={twMerge('block w-fit', labelClassName)}>
-          {label}
-        </label>
+        {label && (
+          <label htmlFor={id} className={twMerge('block w-fit', labelClassName)}>
+            {label}
+          </label>
+        )}
         {actions}
       </div>
       <div className='flex items-stretch gap-2'>

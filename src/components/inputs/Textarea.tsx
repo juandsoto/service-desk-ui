@@ -17,9 +17,11 @@ export const Textarea: React.FC<TextareaProps> = ({
 }) => {
   return (
     <div className={twMerge('w-full space-y-2', containerClassName)}>
-      <label htmlFor={id} className={twMerge('block w-fit', labelClassName)}>
-        {label}
-      </label>
+      {label && (
+        <label htmlFor={id} className={twMerge('block w-fit', labelClassName)}>
+          {label}
+        </label>
+      )}
       <textarea
         {...props}
         className={twMerge(

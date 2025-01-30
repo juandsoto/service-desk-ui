@@ -1,7 +1,7 @@
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   containerClassName?: string;
   labelClassName?: string;
-  label: string;
+  label?: string;
   variant?: 'fill' | 'outline';
   actions?: React.ReactNode;
   rightAction?: React.ReactNode;
@@ -11,7 +11,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
 export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
   containerClassName?: string;
   labelClassName?: string;
-  label: string;
+  label?: string;
   variant?: 'fill' | 'outline';
   error?: string;
 };
