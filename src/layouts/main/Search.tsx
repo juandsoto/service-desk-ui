@@ -27,7 +27,7 @@ export const Search: React.FC<SearchProps> = ({ className, style, title, descrip
       return;
     }
 
-    navigate(`/search?q=${encodeURIComponent(q)}`);
+    navigate({ pathname: '/search', search: `q=${encodeURIComponent(q)}` });
   };
 
   return (
