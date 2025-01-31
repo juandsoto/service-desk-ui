@@ -1,5 +1,6 @@
 import { twMerge } from 'tailwind-merge';
 import { BotIcon } from '../../icons';
+import { Utils } from '../../utils';
 import { formatTime } from '../../utils/dates';
 import { Button } from '../buttons';
 
@@ -41,15 +42,16 @@ export default function Message({
         {messages.map(({ text, options }) => (
           // Message component
           <div key={`${formattedTime} - ${text} ${options?.join(',')}`} className='w-fit'>
-            {text && (
-              <p
-                className={twMerge(
-                  'w-fit px-4 py-1 border rounded-lg',
-                  type === 'bot' ? 'bg-light text-light-700 border-light-500' : 'bg-primary text-light border-primary',
-                )}>
-                {text}
-              </p>
-            )}
+            {type === 'bot'
+              ? text && (
+                  <p
+                    className='w-fit px-4 py-1 border rounded-lg bg-light text-light-700 border-light-500'
+                    dangerouslySetInnerHTML={{ __html: Utils.parseTextWithLinks(text) }}
+                  />
+                )
+              : text && (
+                  <p className='w-fit px-4 py-1 border rounded-lg bg-primary text-light border-primary'>{text}</p>
+                )}
             {options && (
               // Options component
               <div className='flex flex-wrap items-center gap-2 mt-2'>
