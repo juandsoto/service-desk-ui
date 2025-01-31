@@ -4,6 +4,7 @@ import { Icon } from '../';
 import type { IconName } from '../Icon';
 
 type LearnMoreCardProps = {
+  externalLink?: boolean;
   icon?: IconName;
   title: string;
   description: string;
@@ -24,7 +25,14 @@ const VARIANT_LINK_CLASSNAME: Record<NonNullable<LearnMoreCardProps['variant']>,
   outline: 'text-primary-500',
 };
 
-export default function LearnMoreCard({ description, icon, link, title, variant = 'outline' }: LearnMoreCardProps) {
+export default function LearnMoreCard({
+  externalLink = false,
+  description,
+  icon,
+  link,
+  title,
+  variant = 'outline',
+}: LearnMoreCardProps) {
   return (
     <div
       className={twMerge(
@@ -32,14 +40,25 @@ export default function LearnMoreCard({ description, icon, link, title, variant 
         VARIANT_CLASSNAME[variant],
       )}>
       {icon && <Icon name={icon} className='text-light w-10' />}
-      <h3 className='line-clamp-2'>{title}</h3>
+      <h3 className='line-clamp-4'>{title}</h3>
       <p className={twMerge('flex-1 text-base line-clamp-3', VARIANT_DESCRIPTION_CLASSNAME[variant])}>{description}</p>
-      <Link
-        to={link}
-        className={twMerge('flex w-fit items-center gap-2 font-semibold', VARIANT_LINK_CLASSNAME[variant])}>
-        <span>Conoce más información</span>
-        <Icon name='link' className={twMerge('mt-0.5', VARIANT_LINK_CLASSNAME[variant])} />
-      </Link>
+      {externalLink ? (
+        <a
+          href={link}
+          target='_blank'
+          className={twMerge('flex w-fit items-center gap-2 font-semibold', VARIANT_LINK_CLASSNAME[variant])}
+          rel='noreferrer'>
+          <span>Conoce más información</span>
+          <Icon name='link' className={twMerge('mt-0.5', VARIANT_LINK_CLASSNAME[variant])} />
+        </a>
+      ) : (
+        <Link
+          to={link}
+          className={twMerge('flex w-fit items-center gap-2 font-semibold', VARIANT_LINK_CLASSNAME[variant])}>
+          <span>Conoce más información</span>
+          <Icon name='link' className={twMerge('mt-0.5', VARIANT_LINK_CLASSNAME[variant])} />
+        </Link>
+      )}
     </div>
   );
 }
