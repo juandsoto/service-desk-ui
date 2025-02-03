@@ -4,14 +4,16 @@ import { Icon } from '..';
 import { BotIcon } from '../../icons';
 import { useBot } from '../../providers/bot_provider';
 
-type ChatbotProps = React.HTMLAttributes<HTMLDivElement>;
+type ChatbotProps = React.HTMLAttributes<HTMLDivElement> & {
+  onClose: () => void;
+};
 
 export type ChatbotRef = {
   scrollToLastMessage: () => void;
 };
 
 const Chatbot = forwardRef<ChatbotRef, ChatbotProps>(function ChatBot(
-  { className, onSubmit, children, ...props },
+  { className, onSubmit, onClose, children, ...props },
   ref,
 ) {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -40,7 +42,11 @@ const Chatbot = forwardRef<ChatbotRef, ChatbotProps>(function ChatBot(
           <button onClick={bot.minimize}>
             <Icon name='minimize' className='w-8 text-light-700' />
           </button>
-          <button onClick={bot.close}>
+          <button
+            onClick={() => {
+              onClose();
+              bot.close();
+            }}>
             <Icon name='close' className='w-8 text-light-700' />
           </button>
         </div>
