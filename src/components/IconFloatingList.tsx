@@ -7,11 +7,13 @@ import { Button } from './buttons';
 type IconFloatingListProps = React.HTMLAttributes<HTMLDivElement> & {
   contentClassName?: string;
   onIconSelected: (iconName: IconName | null) => void;
+  buttonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 };
 
 const IconFloatingList: React.FC<IconFloatingListProps> = ({
   className,
   contentClassName,
+  buttonProps,
   onIconSelected,
   ...props
 }) => {
@@ -21,7 +23,8 @@ const IconFloatingList: React.FC<IconFloatingListProps> = ({
         <Button
           className='aspect-square p-2 flex items-center justify-center'
           variant='outline'
-          onClick={() => onIconSelected(null)}>
+          onClick={() => onIconSelected(null)}
+          {...buttonProps}>
           N/A
         </Button>
         {PUBLIC_ICON_NAMES.map(iconName => (
@@ -29,7 +32,8 @@ const IconFloatingList: React.FC<IconFloatingListProps> = ({
             key={iconName}
             className='aspect-square p-2 flex items-center justify-center'
             variant='outline'
-            onClick={() => onIconSelected(iconName)}>
+            onClick={() => onIconSelected(iconName)}
+            {...buttonProps}>
             <Icon name={iconName} className='w-6 text-primary' />
           </Button>
         ))}
