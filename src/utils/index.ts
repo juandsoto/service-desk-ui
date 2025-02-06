@@ -20,17 +20,16 @@ export const Utils = {
       .replace(/[^\w]/g, '') // Removes non-alphanumeric characters
       .toLowerCase(), // Ensures case insensitivity
   parseTextWithLinks(text: string): string {
-    // Regex to find valid URLs (both http and https)
-    const urlRegex = /http:\/\/[^\s/$.?#].[^\s]*|https:\/\/[^\s/$.?#].[^\s]*/g;
+    // Regex for [text](URL) format and direct URLs
+    const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s/$.?#].[^\s]*)/g;
 
-    // Replace URLs with <a> tags
-    const formattedText = text.replace(
-      urlRegex,
-      url =>
-        `<a class="no-underline hover:underline text-blue-800" href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`,
-    );
+    // Replace matches with anchor tags
+    const formattedText = text.replace(linkRegex, (_, name, urlFromBrackets, directUrl) => {
+      const url = urlFromBrackets || directUrl;
+      const displayText = name || url;
+      return `<a class="no-underline hover:underline text-blue-800" href="${url}" target="_blank" rel="noopener noreferrer">${displayText}</a>`;
+    });
 
-    // Wrap the formatted text in a <;> tag
     return formattedText;
   },
   generateDistinctColorList(count: number): string[] {

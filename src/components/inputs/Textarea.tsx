@@ -13,15 +13,19 @@ export const Textarea: React.FC<TextareaProps> = ({
   label,
   variant = 'outline',
   error = '',
+  actions,
   ...props
 }) => {
   return (
     <div className={twMerge('w-full space-y-2', containerClassName)}>
-      {label && (
-        <label htmlFor={id} className={twMerge('block w-fit', labelClassName)}>
-          {label}
-        </label>
-      )}
+      <div className='flex items-center justify-between gap-4'>
+        {label && (
+          <label htmlFor={id} className={twMerge('block w-fit', labelClassName)}>
+            {label}
+          </label>
+        )}
+        {actions}
+      </div>
       <textarea
         {...props}
         className={twMerge(

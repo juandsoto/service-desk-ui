@@ -6,6 +6,8 @@ import { useBot } from '../../providers/bot_provider';
 
 type ChatbotProps = React.HTMLAttributes<HTMLDivElement> & {
   onClose: () => void;
+  showInput?: boolean;
+  onInputSubmit: (text: string) => void;
 };
 
 export type ChatbotRef = {
@@ -13,7 +15,7 @@ export type ChatbotRef = {
 };
 
 const Chatbot = forwardRef<ChatbotRef, ChatbotProps>(function ChatBot(
-  { className, onSubmit, onClose, children, ...props },
+  { className, showInput = false, onInputSubmit, onClose, children, ...props },
   ref,
 ) {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -27,6 +29,17 @@ const Chatbot = forwardRef<ChatbotRef, ChatbotProps>(function ChatBot(
       });
     },
   }));
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    const message = Object.fromEntries(formData.entries()).message as string;
+
+    if (message.trim().length === 0) return;
+
+    onInputSubmit(message);
+  };
 
   return (
     <div
@@ -62,6 +75,31 @@ const Chatbot = forwardRef<ChatbotRef, ChatbotProps>(function ChatBot(
 
       {/* Messages */}
       <div className='flex-1 space-y-4 p-4 pb-16'>{children}</div>
+
+      {showInput && (
+        <div className='sticky bottom-0 h-14 bg-light border-t border-light-500'>
+          <form className='flex' onSubmit={handleSubmit}>
+            <input
+              autoFocus={showInput}
+              className='flex-1 w-32 xs:w-auto px-2 xs:px-6 py-4 outline-none'
+              name='message'
+              type='text'
+              placeholder='Escribe un mensaje'
+            />
+            <div className='flex-1 flex'>
+              <button type='button' className='flex-1 flex items-center justify-center'>
+                <Icon name='happy' className='w-6 text-light-700' />
+              </button>
+              <button type='button' className='flex-1 flex items-center justify-center'>
+                <Icon name='paperclip' className='w-6 text-light-700' />
+              </button>
+              <button type='submit' className='flex-1 flex items-center justify-center'>
+                <Icon name='send' className='w-6 text-light-700' />
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
     </div>
   );
 });
