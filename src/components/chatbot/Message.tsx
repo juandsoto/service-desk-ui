@@ -45,12 +45,14 @@ export default function Message({
             {type === 'bot'
               ? text && (
                   <p
-                    className='w-fit px-4 py-1 border rounded-lg bg-light text-light-700 border-light-500'
+                    className='text-left w-fit px-4 py-1 border rounded-lg bg-light text-light-700 border-light-500'
                     dangerouslySetInnerHTML={{ __html: Utils.parseTextWithLinks(text) }}
                   />
                 )
               : text && (
-                  <p className='w-fit px-4 py-1 border rounded-lg bg-primary text-light border-primary'>{text}</p>
+                  <p className='text-right w-fit px-4 py-1 border rounded-lg bg-primary text-light border-primary'>
+                    {text}
+                  </p>
                 )}
             {options && (
               // Options component
@@ -61,8 +63,10 @@ export default function Message({
                     disabled={blockOptions}
                     key={`${formattedTime} - ${option.value}`}
                     className={twMerge(
-                      'px-4 py-1 bg-light text-light-700 border border-light-500 rounded-lg shadow-md',
-                      selectedOptionsIds.includes(option.value) ? 'bg-primary border-primary text-light' : '',
+                      'text-left px-4 py-1 bg-light text-light-700 border border-light-500 rounded-lg shadow-md',
+                      selectedOptionsIds.includes(option.value)
+                        ? 'bg-primary border-primary text-light text-right'
+                        : '',
                     )}
                     onClick={() => onOptionSelected?.(option.value)}>
                     {option.label}
