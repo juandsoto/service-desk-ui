@@ -83,7 +83,7 @@ export default function SidebarLink({
               isActive ? ACTIVE_ICON_VARIANT_CLASSNAME[variant] : INACTIVE_ICON_VARIANT_CLASSNAME[variant],
             )}
           />
-          <span>{title}</span>
+          <span className='line-clamp-1'>{title}</span>
         </div>
         {(subCategories?.length ?? 0) > 0 && (
           <Icon
@@ -121,7 +121,7 @@ export default function SidebarLink({
                           : INACTIVE_CHILD_ICON_VARIANT_CLASSNAME[variant],
                       )}
                     />
-                    <span>{subCategory.title}</span>
+                    <span className='line-clamp-1'>{subCategory.title}</span>
                   </div>
                 </Link>
               </li>
