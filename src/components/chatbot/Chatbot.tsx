@@ -45,7 +45,7 @@ const Chatbot = forwardRef<ChatbotRef, ChatbotProps>(function ChatBot(
     <div
       ref={wrapperRef}
       className={twMerge(
-        'relative flex flex-col w-full xs:w-[440px] bg-light h-[90vh] mx-auto overflow-auto',
+        'relative flex flex-col w-full xs:w-[440px] bg-light min-h-32 h-[90vh] sm:h-[80vh] mx-auto overflow-auto',
         className,
       )}
       {...props}>

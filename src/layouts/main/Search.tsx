@@ -32,7 +32,7 @@ export const Search: React.FC<SearchProps> = ({ className, style, title, descrip
 
   return (
     <div
-      className={twMerge('relative min-h-72 place-content-center bg-primary-500 text-light', className)}
+      className={twMerge('min-h-72 place-content-center bg-primary-500 text-light', className)}
       style={{
         ...style,
         background: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/banner.png)',
@@ -40,7 +40,7 @@ export const Search: React.FC<SearchProps> = ({ className, style, title, descrip
         backgroundPosition: 'center',
       }}
       {...props}>
-      <div className='max-width h-full flex flex-col items-center justify-center text-center space-y-4 py-12 sm:py-0'>
+      <div className='relative max-width h-full flex flex-col items-center justify-center text-center space-y-4 py-12 sm:py-0'>
         <h1 className='max-w-[48rem] line-clamp-3 py-1'>{title}</h1>
         <p className=' max-w-[48rem] line-clamp-5'>{description}</p>
         <form className='w-fit mx-auto' onSubmit={handleOnSubmit}>
@@ -62,7 +62,7 @@ export const Search: React.FC<SearchProps> = ({ className, style, title, descrip
             />
           </div>
         </form>
-        <div className='absolute -bottom-10 right-4'>
+        <div className='absolute top-[calc(100%-3rem)] sm:top-full right-4'>
           <button onClick={openBot}>
             <BotIcon className='w-8 sm:w-12' showIndicator />
           </button>
