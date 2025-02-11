@@ -79,7 +79,7 @@ export default function SidebarLink({
           <Icon
             name={icon}
             className={twMerge(
-              'w-4',
+              'min-w-4',
               isActive ? ACTIVE_ICON_VARIANT_CLASSNAME[variant] : INACTIVE_ICON_VARIANT_CLASSNAME[variant],
             )}
           />
@@ -115,7 +115,7 @@ export default function SidebarLink({
                     <Icon
                       name={subCategory.icon}
                       className={twMerge(
-                        'w-4',
+                        'min-w-4',
                         isChildActive
                           ? ACTIVE_CHILD_ICON_VARIANT_CLASSNAME[variant]
                           : INACTIVE_CHILD_ICON_VARIANT_CLASSNAME[variant],
