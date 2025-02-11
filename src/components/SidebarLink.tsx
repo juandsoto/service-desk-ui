@@ -8,6 +8,7 @@ type SidebarLinkProps = Pick<TCategory, 'title' | 'icon' | 'link'> & {
   subCategories?: TSubCategory[];
   exact?: boolean;
   variant?: 'fill' | 'outline';
+  onLinkPress?: () => void;
 };
 
 const ACTIVE_VARIANT_CLASSNAME: Record<NonNullable<SidebarLinkProps['variant']>, string> = {
@@ -45,6 +46,7 @@ export default function SidebarLink({
   icon,
   link,
   subCategories,
+  onLinkPress,
   exact = false,
   variant = 'outline',
 }: SidebarLinkProps) {
@@ -71,7 +73,8 @@ export default function SidebarLink({
           'flex items-center gap-4 p-2 rounded-md',
           isActive ? ACTIVE_VARIANT_CLASSNAME[variant] : INACTIVE_VARIANT_CLASSNAME[variant],
         )}
-        to={link}>
+        to={link}
+        onClick={onLinkPress}>
         <div className='flex items-center gap-2 flex-1'>
           <Icon
             name={icon}
@@ -106,7 +109,8 @@ export default function SidebarLink({
                   className={
                     isChildActive ? twMerge('border-l-indicator', variant === 'fill' ? 'before:bg-light' : '') : ''
                   }
-                  to={`${link}${subCategory.link}`}>
+                  to={`${link}${subCategory.link}`}
+                  onClick={onLinkPress}>
                   <div className='flex items-center gap-2 flex-1'>
                     <Icon
                       name={subCategory.icon}
