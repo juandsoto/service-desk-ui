@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 import type { InputProps } from './_types';
 
@@ -6,17 +7,10 @@ const variantClassName: Record<NonNullable<InputProps['variant']>, string> = {
   outline: 'bg-transparent border-light-700/40 outline-light-700/40',
 };
 
-export const Input: React.FC<InputProps> = ({
-  id,
-  containerClassName,
-  labelClassName,
-  label,
-  variant = 'outline',
-  actions,
-  rightAction,
-  error = '',
-  ...props
-}) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
+  { id, containerClassName, labelClassName, label, variant = 'outline', actions, rightAction, error = '', ...props },
+  ref,
+) {
   return (
     <div className={twMerge('w-full', containerClassName)}>
       <div className='flex items-center justify-between gap-4 mb-2'>
@@ -30,6 +24,7 @@ export const Input: React.FC<InputProps> = ({
       <div className='flex items-stretch gap-2'>
         <input
           {...props}
+          ref={ref}
           className={twMerge(
             'flex-1 px-4 py-2 border rounded-md outline-offset-4',
             variantClassName[variant],
@@ -46,4 +41,4 @@ export const Input: React.FC<InputProps> = ({
       </span>
     </div>
   );
-};
+});
