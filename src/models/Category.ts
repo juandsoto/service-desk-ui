@@ -23,7 +23,7 @@ function parseCategory(json: any): TCategory {
     description: json?.description ?? '',
     link: json?.link ?? '',
     icon: json?.icon ?? '',
-    status: json?.status ?? 'inactive',
+    status: json?.status ?? 'active',
     tags: json?.tags?.split(',') ?? [],
     order: json?.order ?? 0,
     subCategories: SubCategory.parseMany(json?.subCategories),
