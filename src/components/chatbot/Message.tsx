@@ -36,7 +36,7 @@ export default function Message({
           <span className='block text-xs text-light-700'>Chatbot {formattedTime}</span>
         </div>
       ) : (
-        <span className='block text-xs text-light-700 text-right'>Usuario {formattedTime}</span>
+        <span className='block text-xs text-light-700 text-right'>Tú {formattedTime}</span>
       )}
       <div className={twMerge('mt-2 space-y-2 max-w-[80%]', type === 'bot' ? 'ms-8' : '')}>
         {messages.map(({ text, options }) => (
