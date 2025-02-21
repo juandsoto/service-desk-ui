@@ -32,33 +32,20 @@ export const Utils = {
 
     return formattedText;
   },
-  generateDistinctColorList(count: number): string[] {
-    const colors: string[] = [];
+  parseTextWithPhoneNumber(text: string): string {
+    const mobileRegex = /\b3\d{9}\b/g;
+    const landlineRegex = /\b60\d\d{7}\b/g;
 
-    for (let i = 0; i < count; i++) {
-      const hue = (i * (360 / count)) % 360; // Evenly distribute hues
-      const saturation = 70 + Math.random() * 20; // Keep saturation high
-      const lightness = 50 + Math.random() * 10; // Avoid extremes for clarity
+    const allRegex = [mobileRegex, landlineRegex];
 
-      colors.push(`hsla(${hue}, ${saturation}%, ${lightness}%, 0.2)`);
-    }
+    let modifiedText = text;
 
-    return colors;
-  },
-  generateDistinctColor(existingColors: string[]): string {
-    let newColor: string = '';
-    let isUnique = false;
+    allRegex.forEach(regex => {
+      modifiedText = modifiedText.replace(regex, match => {
+        return `<a class="no-underline hover:underline text-blue-800" href="tel:${match.replace(/\s/g, '')}">${match}</a>`;
+      });
+    });
 
-    while (!isUnique) {
-      const hue = Math.floor(Math.random() * 360); // Random hue
-      const saturation = 70 + Math.random() * 20; // Keep saturation high
-      const lightness = 50 + Math.random() * 10; // Avoid extremes for clarity
-      newColor = `hsla(${hue}, ${saturation}%, ${lightness}%, 0.2)`;
-
-      // Ensure the new color is different from existing ones (ignoring opacity)
-      isUnique = !existingColors.some(color => color.startsWith(`hsla(${hue},`));
-    }
-
-    return newColor;
+    return modifiedText;
   },
 };

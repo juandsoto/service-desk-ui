@@ -33,10 +33,10 @@ export default function Message({
       {type === 'bot' ? (
         <div className='flex items-center gap-2'>
           <BotIcon containerClassName='p-1' className='w-4' />
-          <span className='block text-xs text-light-700'>Livechat {formattedTime}</span>
+          <span className='block text-xs text-light-700'>Chatbot {formattedTime}</span>
         </div>
       ) : (
-        <span className='block text-xs text-light-700 text-right'>Visitor {formattedTime}</span>
+        <span className='block text-xs text-light-700 text-right'>Usuario {formattedTime}</span>
       )}
       <div className={twMerge('mt-2 space-y-2 max-w-[80%]', type === 'bot' ? 'ms-8' : '')}>
         {messages.map(({ text, options }) => (
@@ -46,7 +46,9 @@ export default function Message({
               ? text && (
                   <p
                     className='text-left w-fit px-4 py-1 border rounded-lg bg-light text-light-700 border-light-500'
-                    dangerouslySetInnerHTML={{ __html: Utils.parseTextWithLinks(text) }}
+                    dangerouslySetInnerHTML={{
+                      __html: Utils.parseTextWithLinks(Utils.parseTextWithPhoneNumber(text)).replace(/\n/g, '<br/>'),
+                    }}
                   />
                 )
               : text && (
